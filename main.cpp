@@ -239,7 +239,6 @@ void count_and_speed(){
 volatile float V_need = 0;
 void control_final(){
     while(true){
-        
         Thread::signal_wait(0x1);
         //checking=1;
         I1.disable_irq();
@@ -251,7 +250,6 @@ void control_final(){
         duty_cycle = 0.5f*(V_need - velocity);
         if(R_now >= R_target){duty_cycle = 0;}//prevent overshoot
         if(duty_cycle<0){duty_cycle=0;}
-        
         update_motorstate();       
         I1.enable_irq();
         I2.enable_irq();
